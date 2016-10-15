@@ -10,14 +10,10 @@
 angular.module('weatherappApp')
   .controller('MainCtrl', function ($scope, $http, geolocation) {
     var vm = this;
-    vm.countryorZip;
     vm.url;
     $scope.searchResults;
     vm.appID = '015875585e5ac83b793835e137d645f7';
-    vm.coordinatesURL = 'http://api.openweathermap.org/data/2.5/weather?';
-    vm.countryURL = 'http://api.openweathermap.org/data/2.5/weather?q=';
-    vm.zipURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-    $scope.weatherDetails;
+    vm.getURL = 'http://api.openweathermap.org/data/2.5/weather?';
 
     //by coordinates
     vm.getWeatherWithCoords = function() {
@@ -30,22 +26,22 @@ angular.module('weatherappApp')
         } else{
           $scope.searchResults = true;
         }
-        vm.url = vm.coordinatesURL + 'lat=' + vm.lat + '&lon=' + vm.lng
+        vm.url = vm.getURL + 'lat=' + vm.lat + '&lon=' + vm.lng;
         vm.getWeatherCall();
       });
 
-    }
+    };
     vm.getWeatherWithCoords();
       // by country or zip code
       $scope.getWeather = function(countryorZip){
         var zipcode = /\d/;
         if(zipcode.test(countryorZip)){
           vm.countryorZip = countryorZip;
-           vm.url = vm.zipURL + vm.countryorZip ;
+           vm.url = vm.getURL + "zip=" + vm.countryorZip ;
         }
         else{
           vm.countryorZip = countryorZip;
-          vm.url = vm.countryURL + vm.countryorZip ;
+          vm.url = vm.getURL + "q=" + vm.countryorZip ;
         }
         vm.getWeatherCall();
       };
@@ -66,6 +62,6 @@ angular.module('weatherappApp')
           .error(function(err){
             server.log(err);
           });
-      }
+      };
 
   });
