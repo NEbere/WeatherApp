@@ -1,0 +1,63 @@
+<div class="row text-center inputForm">
+  <form class="form-horizontal" name="weatherForm">
+  <div class="form-group">
+  <div class="col-sm-offset-3 col-sm-4">
+    <input type="text"
+    class="form-control"
+    name="countryOrZip"
+    placeholder="Enter country name or zipcode" ng-model="countryOrZip" required>
+  </div>
+  <div class="col-sm-2">
+    <button type="submit" class="btn btn-default" ng-disabled="weatherForm.$invalid"
+    ng-click="getWeather(countryOrZip);searchResults=true">Get Weather Details</button>
+  </div>
+  <div class="col-sm-3"></div>
+</div>
+</form>
+</div>
+
+<div class="row mainContent">
+    <div class="noSearch" ng-hide="searchResults">
+    <div class="col-sm-offset-2 col-md-8">
+      <h2 class="text-center">
+        Enter a Country or zipcode to view weather
+      </h2>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  <div class="searchResults text-center" ng-show="searchResults">
+    <div class="col-sm-offset-2 col-md-8">
+      <h2>Weather in {{weatherDetails.name}}</h2>
+      <h2 class="text-center">
+        <img src={{imgSRC}}>{{temperature}} °C
+      </h2>
+      <h4>Description: {{description}}</h4>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <tr>
+            <td>Wind</td>
+            <td>{{windSpeed}}  m/s</td>
+          </tr>
+          <tr>
+            <td>Pressure</td>
+            <td>{{pressure}} hpa</td>
+          </tr>
+          <tr>
+            <td>Humidity</td>
+            <td>{{humidity}} %</td>
+          </tr>
+          <tr>
+            <td>Temperature</td>
+            <td>{{temperature}} °C </td>
+          </tr>
+          <tr>
+            <td>Geo coords [lat, lng]</td>
+            <td>[ {{lat}}, {{lng}} ]</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+
+</div>

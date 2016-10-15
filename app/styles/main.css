@@ -1,0 +1,47 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  position: relative;
+}
+
+html, body{
+  height: 100%;
+  min-height: 100%;
+  background: #f5f5f5;
+}
+
+/*main styles */
+.inputForm{
+    background: #5591DF;
+    padding: 2rem 2rem .5rem;
+    border-bottom: solid 5px;
+}
+.input-group .form-control{
+  border-radius: 4px !important;
+}
+.currentLocation{
+    background: #000;
+    color: #fff;
+    line-height: 2;
+    padding-top: .8rem;
+    padding-bottom: 1rem;
+    font-weight: 100;
+    font-size: 1.7rem;
+}
+.currentLocationBtn{
+  background: transparent;
+  color: #fff;
+}
+
+.mainContent{
+    height: 80%;
+    position: absolute;
+    width: 100%;
+}
+.searchResults{
+  padding-top: 2%;
+}
+.noSearch{
+  padding-top: 5%;
+}
